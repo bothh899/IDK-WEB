@@ -88,7 +88,7 @@ body.locked{overflow:hidden;}
 .tap-text{margin-top:28px; font-size:1.1rem; letter-spacing:5px; color:var(--text-muted); animation:pulseText 1.6s infinite;}
 @keyframes pulseText{0%,100%{opacity:0.4;}50%{opacity:1;color:#fff;}}
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR WITH POP-OUT ANIMATION ===== */
 nav{
   position:fixed; top:-100px; left:50%; transform:translateX(-50%);
   width:90%; max-width:480px;
@@ -101,13 +101,54 @@ nav{
   z-index:100; opacity:0;
   transition:top 0.4s ease, opacity 1s ease;
 }
-.nav-content{display:flex; align-items:center; gap:15px;}
-.logo img{height:35px;}
-.idk-oval-logo{
-  font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.1rem;
-  color:#fff; border:2px solid #fff; border-radius:50px; padding:2px 14px;
-  letter-spacing:-0.5px; display:flex; align-items:center; justify-content:center;
-  line-height:1.2; transform:scaleY(0.95);
+
+.nav-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px; /* Lock width so navbar doesn't resize wildly */
+  height: 35px;
+}
+
+.main-logo-img {
+  height: 35px;
+  position: absolute;
+  z-index: 2; /* Always stay on top of the text */
+  left: 20px;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.8)); /* Add shadow to hide text passing behind */
+}
+
+/* Animated Oval Text */
+.idk-pop-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  padding: 2px 14px;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  
+  position: absolute;
+  z-index: 1; /* Hide behind main logo */
+  left: 20px; /* Start at same position as logo */
+  
+  /* 6s total cycle: out for 4s, in for 2s */
+  animation: hideAndSeek 6s infinite cubic-bezier(0.25, 1, 0.5, 1);
+}
+.idk-pop-text span { color: var(--gold); }
+
+@keyframes hideAndSeek {
+  0% { transform: translateX(0) scaleY(0.85) scaleX(0.8); opacity: 0; }
+  10% { transform: translateX(45px) scaleY(0.95) scaleX(1); opacity: 1; } /* Pops out (0.6s) */
+  66.6% { transform: translateX(45px) scaleY(0.95) scaleX(1); opacity: 1; } /* Stays out (approx 4s) */
+  75% { transform: translateX(0) scaleY(0.85) scaleX(0.8); opacity: 0; } /* Slides back in (0.5s) */
+  100% { transform: translateX(0) scaleY(0.85) scaleX(0.8); opacity: 0; } /* Hides (approx 2s) */
 }
 
 /* ===== SECTIONS ===== */
@@ -341,7 +382,9 @@ main { flex: 1; }
 @media (max-width:768px){
   nav{ width:80%; padding:10px 20px; }
   .logo img{ height:28px; }
-  .idk-oval-logo{ font-size:1rem; padding:2px 10px; }
+  .idk-pop-text { font-size: 1rem; padding: 2px 10px; left: 15px; }
+  .main-logo-img { left: 15px; height: 30px; }
+  .nav-content { width: 120px; }
   
   #section-black { padding-top:100px; }
   .scrolly-section { padding:40px 20px; }
@@ -360,7 +403,6 @@ main { flex: 1; }
   .order-modal-content { padding:25px 20px; }
   .form-row { flex-direction:column; gap:0; } 
   .size-chart th, .size-chart td { padding: 6px 3px; font-size: 0.75rem; }
-  
   .footer-container { flex-direction: column; gap: 40px; }
 }
 </style>
@@ -377,8 +419,8 @@ main { flex: 1; }
 
 <nav id="navbar">
   <div class="nav-content">
-    <div class="logo"><img src="logo.png" alt="IDK Logo"></div>
-    <div class="idk-oval-logo">iDK<span>.</span></div>
+    <div class="idk-pop-text">iDK<span>.</span></div>
+    <img src="logo.png" alt="IDK Logo" class="main-logo-img">
   </div>
 </nav>
 
@@ -444,13 +486,11 @@ main { flex: 1; }
 
 </main>
 
-<!-- ===== FOOTER: CONTACT & FEEDBACK ===== -->
 <footer class="site-footer" id="footer" style="opacity:0; transition:opacity 1.5s ease;">
   <div class="footer-container">
     <div class="footer-info">
       <div class="footer-logo">iDK<span>.</span></div>
       <p class="footer-desc">The Immersive Streetwear Experience.</p>
-      
       <ul class="contact-list">
         <li>
           <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -461,14 +501,12 @@ main { flex: 1; }
           081 338 882
         </li>
       </ul>
-
       <div class="social-links">
         <a href="#" target="_blank">IG</a>
         <a href="#" target="_blank">FB</a>
         <a href="#" target="_blank">TT</a>
       </div>
     </div>
-
     <div class="footer-feedback">
       <h3>បញ្ចេញមតិរបស់អ្នក (Feedback)</h3>
       <form class="feedback-form" onsubmit="submitFeedback(event)">
@@ -478,13 +516,11 @@ main { flex: 1; }
       </form>
     </div>
   </div>
-  
   <div class="footer-bottom">
-    &copy; 2026 IDK CAMBODIA. All Rights Reserved.
+    © 2026 IDK CAMBODIA. All Rights Reserved.
   </div>
 </footer>
 
-<!-- MODAL 1: PRODUCT DETAIL -->
 <div id="productModal" class="modal">
   <div class="product-modal-content">
     <span class="close-btn" onclick="closeModal('productModal')">×</span>
@@ -513,7 +549,6 @@ main { flex: 1; }
   </div>
 </div>
 
-<!-- MODAL 2: ORDER FORM & KHQR -->
 <div id="orderModal" class="modal">
     <div class="order-modal-content">
         <span class="close-btn" style="top:10px; right:15px; font-size:1.5rem;" onclick="closeModal('orderModal')">×</span>
@@ -594,7 +629,6 @@ main { flex: 1; }
 </div>
 
 <script>
-// --- Global Data & State Variables ---
 var currentItemId = '';
 var currentPrice = 48;
 var currentQty = 1;
@@ -606,9 +640,7 @@ var productData = {
   gold:{ title:"THE SECRET GOLDEN", subtitle:"ពន្លឺមាសនៃអាណាចក្រអង្គរ", video:"gold.mp4", desc:"កំណែពិសេសកម្រមានបំផុត (Limited 1/1 Piece) អ្នកដែលបើកបានអាវនេះ នឹងក្លាយជាម្ចាស់តែមួយគត់ និងទទួលបានប្រាក់រង្វាន់ $333 ភ្លាមៗ!", btnBg:"#D4AF37", btnColor:"#000" }
 };
 
-// --- Initialization & State Persistence Logic ---
 document.addEventListener("DOMContentLoaded", function() {
-    // ភ្ជាប់ Event Listener សម្រាប់ Save State រាល់ពេលមានការផ្លាស់ប្តូរ
     document.getElementById('phone1').addEventListener('input', saveState);
     document.getElementById('phone2').addEventListener('input', saveState);
     document.getElementById('address').addEventListener('input', saveState);
@@ -617,7 +649,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var introSeen = sessionStorage.getItem('introSeen');
     var stateStr = sessionStorage.getItem('idk_state');
     
-    // លក្ខខណ្ឌទី១: រំលង Intro បើធ្លាប់មើលហើយ
     if (introSeen === 'true') {
         document.getElementById('intro-screen').style.display = 'none';
         document.body.classList.remove('locked');
@@ -632,17 +663,14 @@ document.addEventListener("DOMContentLoaded", function() {
             if(playPromise !== undefined) playPromise.catch(function(e){});
         }
 
-        // លក្ខខណ្ឌទី២: ទាញទិន្នន័យចាស់មកវិញ (Restore State)
         if (stateStr) {
             var state = JSON.parse(stateStr);
             
-            // Restore Form Inputs
             document.getElementById('phone1').value = state.p1 || '';
             document.getElementById('phone2').value = state.p2 || '';
             document.getElementById('address').value = state.addr || '';
             document.getElementById('note').value = state.note || '';
             
-            // Restore Location
             if (state.loc) {
                 userLocationLink = state.loc;
                 var btnText = document.getElementById('locBtnText');
@@ -653,23 +681,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 clearBtn.style.display = 'inline-flex';
             }
 
-            // Restore Pop-Ups
             if (state.item) {
                 currentItemId = state.item;
                 currentQty = state.qty || 1;
                 
                 if (state.modal === 'product') {
-                    // បើកផ្ទាំងមើលលម្អិត
                     openProductModal(currentItemId);
                 } else if (state.modal === 'order') {
-                    // បើកផ្ទាំងកុម្ម៉ង់ទិញ
                     var data = productData[currentItemId];
                     document.getElementById('formItemName').innerText = data.title + " Hoodie";
                     document.getElementById('qtyInput').value = currentQty;
                     
                     renderSizeSelectors();
                     
-                    // រក្សាទុកទំហំអាវ (Size) ដែលអតិថិជនបានរើស
                     if (state.sizes && state.sizes.length > 0) {
                         for(var i=1; i<=currentQty; i++) {
                             var sel = document.getElementById('sizeSelect_' + i);
@@ -683,7 +707,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.getElementById('orderModal').classList.add('active');
                     document.body.style.overflow = 'hidden';
                     
-                    // Restore ផ្ទាំង QR ឬ Form
                     if (state.view === 'qr') {
                         document.getElementById('view-form').classList.remove('view-active');
                         document.getElementById('view-qr').classList.add('view-active');
@@ -698,7 +721,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// Function សំខាន់សម្រាប់ Save ទិន្នន័យទុក
 function saveState() {
     var sizes = [];
     for(var i=1; i<=currentQty; i++) {
@@ -736,7 +758,7 @@ function startExperience(){
   setTimeout(function(){
     document.getElementById('intro-screen').style.opacity = '0';
     setTimeout(function(){
-      sessionStorage.setItem('introSeen', 'true'); // កំណត់ថាមើល Intro រួចហើយ
+      sessionStorage.setItem('introSeen', 'true'); 
       document.getElementById('intro-screen').style.visibility = 'hidden';
       document.body.classList.remove('locked');
       document.getElementById('main-content').style.opacity = '1';
@@ -808,7 +830,6 @@ var videoObserver = new IntersectionObserver(function(entries){
   });
 }, { threshold: 0.2 });
 document.querySelectorAll('.video-wrapper video').forEach(function(v){ videoObserver.observe(v); });
-
 
 function openProductModal(id){
   currentItemId = id;
@@ -909,7 +930,7 @@ function fetchLocation() {
             btnText.innerText = "✓ My Location";
             btn.classList.add('active');
             clearBtn.style.display = 'inline-flex';
-            saveState(); // សេវទុកពេលយកទីតាំងបានជោគជ័យ
+            saveState(); 
         }, function(error) {
             btnText.innerText = "📍 Share Location";
             alert("មិនអាចទាញយកទីតាំងបានទេ។ សូមពិនិត្យមើលការអនុញ្ញាត (Location Permission) លើទូរស័ព្ទរបស់អ្នក។");
@@ -952,7 +973,6 @@ function goToQR() {
 function finishOrder() {
     alert("សូមអរគុណសម្រាប់ការបញ្ជាទិញ! ក្រុមការងារយើងខ្ញុំនឹងទាក់ទងទៅកាន់អ្នកក្នុងពេលឆាប់ៗនេះ។");
     
-    // បន្ទាប់ពីទិញរួច លុបទិន្នន័យចេញពី Session Storage ដើម្បីចាប់ផ្តើមថ្មី
     sessionStorage.removeItem('idk_state');
     
     document.getElementById('phone1').value = '';
@@ -976,7 +996,6 @@ function closeModal(modalId){
   if(modalId === 'productModal') {
       setTimeout(function(){ document.getElementById('modalVideo').src = ""; }, 300);
   }
-  // ពេលបិទ Pop-up ឲ្យ Update State ថាគ្មាន Pop-up ណាត្រូវបើកទេ (តែរក្សាលេខទូរស័ព្ទទុក)
   setTimeout(saveState, 50); 
 }
 </script>
