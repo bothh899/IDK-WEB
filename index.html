@@ -27,6 +27,9 @@ body{
   font-family:'Montserrat','Kantumruy Pro',sans-serif;
   overflow-x:hidden;
   position:relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ===== STONE WALL TEXTURE ===== */
@@ -108,6 +111,7 @@ nav{
 }
 
 /* ===== SECTIONS ===== */
+main { flex: 1; }
 .scrolly-section{
   min-height:auto;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -211,9 +215,92 @@ nav{
 .gold-section h2, .gold-section h3{ color:var(--gold); text-shadow:0 0 20px rgba(212,175,55,0.35); }
 .product-info p{ color:#666; font-size:0.85rem; }
 
+/* ===== FOOTER (FEEDBACK & INFO) ===== */
+.site-footer {
+  margin-top: 50px;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 60px 20px 30px;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: space-between;
+}
+
+.footer-info, .footer-feedback {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Info Section */
+.footer-logo {
+  font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem;
+  color: #fff; letter-spacing: -1px; margin-bottom: 5px;
+}
+.footer-logo span { color: var(--gold); }
+.footer-desc { color: #888; font-size: 0.9rem; margin-bottom: 25px; font-family: 'Kantumruy Pro', sans-serif; }
+
+.contact-list { list-style: none; margin-bottom: 25px; }
+.contact-list li {
+  display: flex; align-items: flex-start; gap: 15px;
+  color: #ccc; font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5;
+  font-family: 'Montserrat', 'Kantumruy Pro', sans-serif;
+}
+.contact-icon {
+  flex-shrink: 0; width: 20px; height: 20px; fill: var(--gold); margin-top: 2px;
+}
+
+.social-links { display: flex; gap: 15px; }
+.social-links a {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; text-decoration: none; font-weight: bold; font-size: 0.85rem;
+  transition: all 0.3s;
+}
+.social-links a:hover { background: var(--gold); color: #000; border-color: var(--gold); transform: translateY(-3px); }
+
+/* Feedback Form Section */
+.footer-feedback h3 {
+  font-size: 1.4rem; color: #fff; margin-bottom: 20px;
+  font-family: 'Kantumruy Pro', sans-serif; font-weight: 700;
+}
+.feedback-form { display: flex; flex-direction: column; gap: 15px; }
+.feedback-form input, .feedback-form textarea {
+  width: 100%; padding: 14px; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.5);
+  color: #fff; font-family: 'Montserrat', 'Kantumruy Pro', sans-serif;
+  font-size: 0.9rem; outline: none; transition: 0.3s;
+}
+.feedback-form input:focus, .feedback-form textarea:focus {
+  border-color: var(--gold); box-shadow: 0 0 10px rgba(212,175,55,0.1);
+}
+.feedback-form textarea { resize: none; height: 100px; }
+.btn-submit-feedback {
+  background: #fff; color: #000; padding: 14px; border: none; border-radius: 30px;
+  font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s;
+  font-family: 'Montserrat', 'Kantumruy Pro', sans-serif;
+}
+.btn-submit-feedback:hover { background: var(--gold); }
+.btn-submit-feedback:active { transform: scale(0.98); }
+
+.footer-bottom {
+  text-align: center; margin-top: 50px; padding-top: 20px;
+  border-top: 1px dashed rgba(255,255,255,0.1);
+  color: #555; font-size: 0.8rem; font-family: 'Montserrat', sans-serif;
+}
+
 /* ===== MODALS BASE ===== */
 .modal{
-  display:none; position:fixed; inset:0; z-index:3000;
+  display:none; position:fixed; inset:0; z-index:5000;
   background:rgba(0,0,0,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
   align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s ease;
 }
@@ -280,20 +367,10 @@ nav{
 .form-row { display:flex; gap:10px; } 
 .form-row .form-group { flex:1; }
 
-/* --- ទីតាំងប៊ូតុង Location ថ្មី --- */
-.loc-btn { 
-    background:rgba(212,175,55,0.1); color:var(--gold); border:1px solid rgba(212,175,55,0.3); 
-    border-radius:20px; padding:4px 12px; font-size:0.75rem; cursor:pointer; 
-    font-family:'Kantumruy Pro',sans-serif; transition:all 0.2s ease; 
-    display:flex; align-items:center; 
-}
+.loc-btn { background:rgba(212,175,55,0.1); color:var(--gold); border:1px solid rgba(212,175,55,0.3); border-radius:20px; padding:4px 12px; font-size:0.75rem; cursor:pointer; font-family:'Kantumruy Pro',sans-serif; transition:all 0.2s ease; display:flex; align-items:center; }
 .loc-btn:hover { background:var(--gold); color:#000; }
 .loc-btn.active { background:var(--gold); color:#000; border-color:var(--gold); font-weight:700; }
-.loc-btn-clear { 
-    background:rgba(0,0,0,0.3); color:#fff; border-radius:50%; 
-    width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; 
-    font-size:0.7rem; margin-left:8px; transition:0.2s; 
-}
+.loc-btn-clear { background:rgba(0,0,0,0.3); color:#fff; border-radius:50%; width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; font-size:0.7rem; margin-left:8px; transition:0.2s; }
 .loc-btn-clear:hover { background:#000; color:var(--gold); }
 
 .order-total-display { display:flex; justify-content:space-between; align-items:center; margin:10px 0 20px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1); }
@@ -333,6 +410,9 @@ nav{
   .order-modal-content { padding:25px 20px; }
   .form-row { flex-direction:column; gap:0; } 
   .size-chart th, .size-chart td { padding: 6px 3px; font-size: 0.75rem; }
+
+  /* Footer Mobile */
+  .footer-container { flex-direction: column; gap: 40px; }
 }
 </style>
 </head>
@@ -415,7 +495,45 @@ nav{
 
 </main>
 
-<!-- MODAL 1: PRODUCT DETAIL -->
+<footer class="site-footer" id="footer" style="opacity:0; transition:opacity 1.5s ease;">
+  <div class="footer-container">
+    <div class="footer-info">
+      <div class="footer-logo">iDK<span>.</span></div>
+      <p class="footer-desc">The Immersive Streetwear Experience.</p>
+      
+      <ul class="contact-list">
+        <li>
+          <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          LIFE field, Stable Coffee, TK, Toul Kork, Cambodia, 120400
+        </li>
+        <li>
+          <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          081 338 882
+        </li>
+      </ul>
+
+      <div class="social-links">
+        <a href="#" target="_blank">IG</a>
+        <a href="#" target="_blank">FB</a>
+        <a href="#" target="_blank">TT</a>
+      </div>
+    </div>
+
+    <div class="footer-feedback">
+      <h3>បញ្ចេញមតិរបស់អ្នក (Feedback)</h3>
+      <form class="feedback-form" onsubmit="submitFeedback(event)">
+        <input type="text" placeholder="ឈ្មោះរបស់អ្នក (Name)" required>
+        <textarea placeholder="មតិយោបល់... (Your message/feedback)" required></textarea>
+        <button type="submit" class="btn-submit-feedback">ផ្ញើសារ (SEND MESSAGE)</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    &copy; 2026 IDK CAMBODIA. All Rights Reserved.
+  </div>
+</footer>
+
 <div id="productModal" class="modal">
   <div class="product-modal-content">
     <span class="close-btn" onclick="closeModal('productModal')">×</span>
@@ -444,7 +562,6 @@ nav{
   </div>
 </div>
 
-<!-- MODAL 2: ORDER FORM & KHQR -->
 <div id="orderModal" class="modal">
     <div class="order-modal-content">
         <span class="close-btn" style="top:10px; right:15px; font-size:1.5rem;" onclick="closeModal('orderModal')">×</span>
@@ -481,7 +598,6 @@ nav{
             <div class="form-group">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                     <label style="margin-bottom:0;">ទីតាំងដឹកជញ្ជូន (Address) *</label>
-                    <!-- ប៊ូតុង Share Location ថ្មី -->
                     <button type="button" id="locBtn" class="loc-btn" onclick="fetchLocation()">
                         <span id="locBtnText">📍 Share Location</span>
                         <span id="locBtnClear" class="loc-btn-clear" style="display:none;" onclick="clearLocation(event)">×</span>
@@ -529,7 +645,7 @@ nav{
 var currentItemId = '';
 var currentPrice = 48;
 var currentQty = 1;
-var userLocationLink = ''; // ទិន្នន័យសម្រាប់ផ្ទុកទីតាំង GPS
+var userLocationLink = ''; 
 
 var bgMusic = document.getElementById('bgMusic');
 var unboxSound = document.getElementById('unboxSound');
@@ -547,10 +663,15 @@ function startExperience(){
     setTimeout(function(){
       document.getElementById('intro-screen').style.visibility = 'hidden';
       document.body.classList.remove('locked');
+      
+      // Reveal Main Content & Footer
       document.getElementById('main-content').style.opacity = '1';
+      document.getElementById('footer').style.opacity = '1';
       document.getElementById('navbar').style.opacity = '1';
+      
       var navTop = window.innerWidth <= 768 ? "15px" : "20px";
       document.getElementById('navbar').style.top = navTop;
+      
       if(bgMusic){ bgMusic.volume = 0.4; bgMusic.play().catch(function(){}); }
 
       var firstVid = document.getElementById('firstVideo');
@@ -698,9 +819,8 @@ function backToDetail() {
     }, 350);
 }
 
-/* --- មុខងារ Location ថ្មី --- */
 function fetchLocation() {
-    if(userLocationLink !== "") return; // កុំអោយចុចបាន២ដង
+    if(userLocationLink !== "") return; 
     
     var btnText = document.getElementById('locBtnText');
     var btn = document.getElementById('locBtn');
@@ -727,7 +847,7 @@ function fetchLocation() {
 }
 
 function clearLocation(event) {
-    if(event) event.stopPropagation(); // ការពារកុំឲ្យលោតទៅ fetchLocation ពេលចុចសញ្ញាខ្វែង
+    if(event) event.stopPropagation(); 
     userLocationLink = "";
     var btnText = document.getElementById('locBtnText');
     var btn = document.getElementById('locBtn');
@@ -742,7 +862,6 @@ function goToQR() {
     var p1 = document.getElementById('phone1').value;
     var addr = document.getElementById('address').value;
     
-    // បញ្ជាក់៖ បើមាន userLocationLink ហើយ មិនបាច់បង្ខំឲ្យវាយអក្សរក្នុង Address ទេ
     if(p1.trim() === '' || (addr.trim() === '' && userLocationLink === '')) {
         alert("សូមបំពេញលេខទូរស័ព្ទទី១ និងទីតាំងដឹកជញ្ជូន (ឬចុច Share Location) ឲ្យបានត្រឹមត្រូវ។");
         return;
@@ -760,6 +879,13 @@ function finishOrder() {
     closeModal('orderModal');
 }
 
+/* --- Feedback Form Logic --- */
+function submitFeedback(event) {
+    event.preventDefault(); // ទប់ស្កាត់ការ Refresh ទំព័រ
+    alert("អរគុណសម្រាប់ការបញ្ចេញមតិរបស់អ្នក! ក្រុមការងារយើងខ្ញុំទទួលបានហើយ។");
+    event.target.reset(); // លុបទិន្នន័យក្នុងប្រអប់ក្រោយពេលផ្ញើរួច
+}
+
 function closeModal(modalId){
   document.getElementById(modalId).classList.remove('active');
   document.body.style.overflow = 'auto';
@@ -767,13 +893,12 @@ function closeModal(modalId){
       setTimeout(function(){ document.getElementById('modalVideo').src = ""; }, 300);
   }
   if(modalId === 'orderModal') {
-      // ជម្រះទិន្នន័យចោលពេលបិទ Form 
       setTimeout(function(){
           document.getElementById('phone1').value = '';
           document.getElementById('phone2').value = '';
           document.getElementById('address').value = '';
           document.getElementById('note').value = '';
-          clearLocation(); // លុប Location ចោលឲ្យទៅសភាពដើមវិញ
+          clearLocation(); 
       }, 300);
   }
 }
