@@ -217,86 +217,36 @@ main { flex: 1; }
 
 /* ===== FOOTER (FEEDBACK & INFO) ===== */
 .site-footer {
-  margin-top: 50px;
-  background: rgba(10, 10, 10, 0.7);
+  margin-top: 50px; background: rgba(10, 10, 10, 0.7);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 60px 20px 30px;
-  position: relative;
-  z-index: 10;
+  padding: 60px 20px 30px; position: relative; z-index: 10;
 }
+.footer-container { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 50px; justify-content: space-between; }
+.footer-info, .footer-feedback { flex: 1; min-width: 300px; }
 
-.footer-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-  justify-content: space-between;
-}
-
-.footer-info, .footer-feedback {
-  flex: 1;
-  min-width: 300px;
-}
-
-/* Info Section */
-.footer-logo {
-  font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem;
-  color: #fff; letter-spacing: -1px; margin-bottom: 5px;
-}
+.footer-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: #fff; letter-spacing: -1px; margin-bottom: 5px; }
 .footer-logo span { color: var(--gold); }
 .footer-desc { color: #888; font-size: 0.9rem; margin-bottom: 25px; font-family: 'Kantumruy Pro', sans-serif; }
 
 .contact-list { list-style: none; margin-bottom: 25px; }
-.contact-list li {
-  display: flex; align-items: flex-start; gap: 15px;
-  color: #ccc; font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5;
-  font-family: 'Montserrat', 'Kantumruy Pro', sans-serif;
-}
-.contact-icon {
-  flex-shrink: 0; width: 20px; height: 20px; fill: var(--gold); margin-top: 2px;
-}
+.contact-list li { display: flex; align-items: flex-start; gap: 15px; color: #ccc; font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5; font-family: 'Montserrat', 'Kantumruy Pro', sans-serif; }
+.contact-icon { flex-shrink: 0; width: 20px; height: 20px; fill: var(--gold); margin-top: 2px; }
 
 .social-links { display: flex; gap: 15px; }
-.social-links a {
-  display: flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px; border-radius: 50%;
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-  color: #fff; text-decoration: none; font-weight: bold; font-size: 0.85rem;
-  transition: all 0.3s;
-}
+.social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; text-decoration: none; font-weight: bold; font-size: 0.85rem; transition: all 0.3s; }
 .social-links a:hover { background: var(--gold); color: #000; border-color: var(--gold); transform: translateY(-3px); }
 
-/* Feedback Form Section */
-.footer-feedback h3 {
-  font-size: 1.4rem; color: #fff; margin-bottom: 20px;
-  font-family: 'Kantumruy Pro', sans-serif; font-weight: 700;
-}
+.footer-feedback h3 { font-size: 1.4rem; color: #fff; margin-bottom: 20px; font-family: 'Kantumruy Pro', sans-serif; font-weight: 700; }
 .feedback-form { display: flex; flex-direction: column; gap: 15px; }
-.feedback-form input, .feedback-form textarea {
-  width: 100%; padding: 14px; border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.5);
-  color: #fff; font-family: 'Montserrat', 'Kantumruy Pro', sans-serif;
-  font-size: 0.9rem; outline: none; transition: 0.3s;
-}
-.feedback-form input:focus, .feedback-form textarea:focus {
-  border-color: var(--gold); box-shadow: 0 0 10px rgba(212,175,55,0.1);
-}
+.feedback-form input, .feedback-form textarea { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.5); color: #fff; font-family: 'Montserrat', 'Kantumruy Pro', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; }
+.feedback-form input:focus, .feedback-form textarea:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(212,175,55,0.1); }
 .feedback-form textarea { resize: none; height: 100px; }
-.btn-submit-feedback {
-  background: #fff; color: #000; padding: 14px; border: none; border-radius: 30px;
-  font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s;
-  font-family: 'Montserrat', 'Kantumruy Pro', sans-serif;
-}
+.btn-submit-feedback { background: #fff; color: #000; padding: 14px; border: none; border-radius: 30px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; font-family: 'Montserrat', 'Kantumruy Pro', sans-serif; }
 .btn-submit-feedback:hover { background: var(--gold); }
 .btn-submit-feedback:active { transform: scale(0.98); }
 
-.footer-bottom {
-  text-align: center; margin-top: 50px; padding-top: 20px;
-  border-top: 1px dashed rgba(255,255,255,0.1);
-  color: #555; font-size: 0.8rem; font-family: 'Montserrat', sans-serif;
-}
+.footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px dashed rgba(255,255,255,0.1); color: #555; font-size: 0.8rem; font-family: 'Montserrat', sans-serif; }
 
 /* ===== MODALS BASE ===== */
 .modal{
@@ -410,8 +360,7 @@ main { flex: 1; }
   .order-modal-content { padding:25px 20px; }
   .form-row { flex-direction:column; gap:0; } 
   .size-chart th, .size-chart td { padding: 6px 3px; font-size: 0.75rem; }
-
-  /* Footer Mobile */
+  
   .footer-container { flex-direction: column; gap: 40px; }
 }
 </style>
@@ -439,7 +388,7 @@ main { flex: 1; }
     <div class="carved-text" data-speed="-0.1">ស្រមោលអង្គរ</div>
     <div class="hero-title-area">
       <h1>IDK BLIND BOX</h1>
-      
+      <p>SCROLL TO REVEAL</p>
     </div>
     <div class="product-showcase item-reveal">
       <div class="video-wrapper" data-id="black" onclick="openProductModal('black')">
@@ -495,6 +444,7 @@ main { flex: 1; }
 
 </main>
 
+<!-- ===== FOOTER: CONTACT & FEEDBACK ===== -->
 <footer class="site-footer" id="footer" style="opacity:0; transition:opacity 1.5s ease;">
   <div class="footer-container">
     <div class="footer-info">
@@ -534,6 +484,7 @@ main { flex: 1; }
   </div>
 </footer>
 
+<!-- MODAL 1: PRODUCT DETAIL -->
 <div id="productModal" class="modal">
   <div class="product-modal-content">
     <span class="close-btn" onclick="closeModal('productModal')">×</span>
@@ -562,6 +513,7 @@ main { flex: 1; }
   </div>
 </div>
 
+<!-- MODAL 2: ORDER FORM & KHQR -->
 <div id="orderModal" class="modal">
     <div class="order-modal-content">
         <span class="close-btn" style="top:10px; right:15px; font-size:1.5rem;" onclick="closeModal('orderModal')">×</span>
@@ -642,10 +594,133 @@ main { flex: 1; }
 </div>
 
 <script>
+// --- Global Data & State Variables ---
 var currentItemId = '';
 var currentPrice = 48;
 var currentQty = 1;
-var userLocationLink = ''; 
+var userLocationLink = '';
+
+var productData = {
+  black:{ title:"BLACK", subtitle:"ស្រមោលអង្គរ", video:"black.mp4", desc:"រចនាឡើងជាមួយនឹងពណ៌ខ្មៅអាថ៌កំបាំង តំណាងឲ្យភាពរឹងមាំ និងអំណាចនៃអាណាចក្រអង្គរ។", btnBg:"#fff", btnColor:"#000" },
+  white:{ title:"WHITE", subtitle:"អប្សរអង្គរ", video:"white.mp4", desc:"ពណ៌សបរិសុទ្ធ តំណាងឲ្យភាពទន់ភ្លន់ និងស្រស់ស្អាតនៃរបាំអប្សរា។", btnBg:"#fff", btnColor:"#000" },
+  gold:{ title:"THE SECRET GOLDEN", subtitle:"ពន្លឺមាសនៃអាណាចក្រអង្គរ", video:"gold.mp4", desc:"កំណែពិសេសកម្រមានបំផុត (Limited 1/1 Piece) អ្នកដែលបើកបានអាវនេះ នឹងក្លាយជាម្ចាស់តែមួយគត់ និងទទួលបានប្រាក់រង្វាន់ $333 ភ្លាមៗ!", btnBg:"#D4AF37", btnColor:"#000" }
+};
+
+// --- Initialization & State Persistence Logic ---
+document.addEventListener("DOMContentLoaded", function() {
+    // ភ្ជាប់ Event Listener សម្រាប់ Save State រាល់ពេលមានការផ្លាស់ប្តូរ
+    document.getElementById('phone1').addEventListener('input', saveState);
+    document.getElementById('phone2').addEventListener('input', saveState);
+    document.getElementById('address').addEventListener('input', saveState);
+    document.getElementById('note').addEventListener('input', saveState);
+
+    var introSeen = sessionStorage.getItem('introSeen');
+    var stateStr = sessionStorage.getItem('idk_state');
+    
+    // លក្ខខណ្ឌទី១: រំលង Intro បើធ្លាប់មើលហើយ
+    if (introSeen === 'true') {
+        document.getElementById('intro-screen').style.display = 'none';
+        document.body.classList.remove('locked');
+        document.getElementById('main-content').style.opacity = '1';
+        document.getElementById('footer').style.opacity = '1';
+        document.getElementById('navbar').style.opacity = '1';
+        document.getElementById('navbar').style.top = window.innerWidth <= 768 ? "15px" : "20px";
+        
+        var firstVid = document.getElementById('firstVideo');
+        if(firstVid){
+            var playPromise = firstVid.play();
+            if(playPromise !== undefined) playPromise.catch(function(e){});
+        }
+
+        // លក្ខខណ្ឌទី២: ទាញទិន្នន័យចាស់មកវិញ (Restore State)
+        if (stateStr) {
+            var state = JSON.parse(stateStr);
+            
+            // Restore Form Inputs
+            document.getElementById('phone1').value = state.p1 || '';
+            document.getElementById('phone2').value = state.p2 || '';
+            document.getElementById('address').value = state.addr || '';
+            document.getElementById('note').value = state.note || '';
+            
+            // Restore Location
+            if (state.loc) {
+                userLocationLink = state.loc;
+                var btnText = document.getElementById('locBtnText');
+                var btn = document.getElementById('locBtn');
+                var clearBtn = document.getElementById('locBtnClear');
+                btnText.innerText = "✓ My Location";
+                btn.classList.add('active');
+                clearBtn.style.display = 'inline-flex';
+            }
+
+            // Restore Pop-Ups
+            if (state.item) {
+                currentItemId = state.item;
+                currentQty = state.qty || 1;
+                
+                if (state.modal === 'product') {
+                    // បើកផ្ទាំងមើលលម្អិត
+                    openProductModal(currentItemId);
+                } else if (state.modal === 'order') {
+                    // បើកផ្ទាំងកុម្ម៉ង់ទិញ
+                    var data = productData[currentItemId];
+                    document.getElementById('formItemName').innerText = data.title + " Hoodie";
+                    document.getElementById('qtyInput').value = currentQty;
+                    
+                    renderSizeSelectors();
+                    
+                    // រក្សាទុកទំហំអាវ (Size) ដែលអតិថិជនបានរើស
+                    if (state.sizes && state.sizes.length > 0) {
+                        for(var i=1; i<=currentQty; i++) {
+                            var sel = document.getElementById('sizeSelect_' + i);
+                            if (sel && state.sizes[i-1]) {
+                                sel.value = state.sizes[i-1];
+                            }
+                        }
+                    }
+                    updateTotal();
+                    
+                    document.getElementById('orderModal').classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Restore ផ្ទាំង QR ឬ Form
+                    if (state.view === 'qr') {
+                        document.getElementById('view-form').classList.remove('view-active');
+                        document.getElementById('view-qr').classList.add('view-active');
+                        document.getElementById('qrTotal').innerText = "$" + (currentPrice * currentQty);
+                    } else {
+                        document.getElementById('view-qr').classList.remove('view-active');
+                        document.getElementById('view-form').classList.add('view-active');
+                    }
+                }
+            }
+        }
+    }
+});
+
+// Function សំខាន់សម្រាប់ Save ទិន្នន័យទុក
+function saveState() {
+    var sizes = [];
+    for(var i=1; i<=currentQty; i++) {
+        var sel = document.getElementById('sizeSelect_' + i);
+        if(sel) sizes.push(sel.value);
+    }
+
+    var state = {
+        modal: document.getElementById('orderModal').classList.contains('active') ? 'order' : 
+               (document.getElementById('productModal').classList.contains('active') ? 'product' : 'none'),
+        view: document.getElementById('view-qr').classList.contains('view-active') ? 'qr' : 'form',
+        item: currentItemId,
+        qty: currentQty,
+        sizes: sizes,
+        p1: document.getElementById('phone1').value,
+        p2: document.getElementById('phone2').value,
+        addr: document.getElementById('address').value,
+        note: document.getElementById('note').value,
+        loc: userLocationLink
+    };
+    sessionStorage.setItem('idk_state', JSON.stringify(state));
+}
 
 var bgMusic = document.getElementById('bgMusic');
 var unboxSound = document.getElementById('unboxSound');
@@ -661,10 +736,9 @@ function startExperience(){
   setTimeout(function(){
     document.getElementById('intro-screen').style.opacity = '0';
     setTimeout(function(){
+      sessionStorage.setItem('introSeen', 'true'); // កំណត់ថាមើល Intro រួចហើយ
       document.getElementById('intro-screen').style.visibility = 'hidden';
       document.body.classList.remove('locked');
-      
-      // Reveal Main Content & Footer
       document.getElementById('main-content').style.opacity = '1';
       document.getElementById('footer').style.opacity = '1';
       document.getElementById('navbar').style.opacity = '1';
@@ -735,11 +809,6 @@ var videoObserver = new IntersectionObserver(function(entries){
 }, { threshold: 0.2 });
 document.querySelectorAll('.video-wrapper video').forEach(function(v){ videoObserver.observe(v); });
 
-var productData = {
-  black:{ title:"BLACK", subtitle:"ស្រមោលអង្គរ", video:"black.mp4", desc:"រចនាឡើងជាមួយនឹងពណ៌ខ្មៅអាថ៌កំបាំង តំណាងឲ្យភាពរឹងមាំ និងអំណាចនៃអាណាចក្រអង្គរ។", btnBg:"#fff", btnColor:"#000" },
-  white:{ title:"WHITE", subtitle:"អប្សរអង្គរ", video:"white.mp4", desc:"ពណ៌សបរិសុទ្ធ តំណាងឲ្យភាពទន់ភ្លន់ និងស្រស់ស្អាតនៃរបាំអប្សរា។", btnBg:"#fff", btnColor:"#000" },
-  gold:{ title:"THE SECRET GOLDEN", subtitle:"ពន្លឺមាសនៃអាណាចក្រអង្គរ", video:"gold.mp4", desc:"កំណែពិសេសកម្រមានបំផុត (Limited 1/1 Piece) អ្នកដែលបើកបានអាវនេះ នឹងក្លាយជាម្ចាស់តែមួយគត់ និងទទួលបានប្រាក់រង្វាន់ $333 ភ្លាមៗ!", btnBg:"#D4AF37", btnColor:"#000" }
-};
 
 function openProductModal(id){
   currentItemId = id;
@@ -758,6 +827,7 @@ function openProductModal(id){
   
   document.getElementById('productModal').classList.add('active');
   document.body.style.overflow = 'hidden';
+  saveState();
 }
 
 function openOrderForm() {
@@ -775,6 +845,7 @@ function openOrderForm() {
   setTimeout(function(){
       document.getElementById('orderModal').classList.add('active');
       document.body.style.overflow = 'hidden';
+      saveState();
   }, 350); 
 }
 
@@ -785,6 +856,7 @@ function updateQty(change) {
         document.getElementById('qtyInput').value = currentQty;
         renderSizeSelectors(); 
         updateTotal();
+        saveState();
     }
 }
 
@@ -795,7 +867,7 @@ function renderSizeSelectors() {
         var sizeHTML = `
             <div class="size-item">
                 <label>Size អាវទី ${i}:</label>
-                <select id="sizeSelect_${i}">
+                <select id="sizeSelect_${i}" onchange="saveState()">
                     <option value="S">Size S</option>
                     <option value="M" selected>Size M</option>
                     <option value="L">Size L</option>
@@ -837,6 +909,7 @@ function fetchLocation() {
             btnText.innerText = "✓ My Location";
             btn.classList.add('active');
             clearBtn.style.display = 'inline-flex';
+            saveState(); // សេវទុកពេលយកទីតាំងបានជោគជ័យ
         }, function(error) {
             btnText.innerText = "📍 Share Location";
             alert("មិនអាចទាញយកទីតាំងបានទេ។ សូមពិនិត្យមើលការអនុញ្ញាត (Location Permission) លើទូរស័ព្ទរបស់អ្នក។");
@@ -856,6 +929,7 @@ function clearLocation(event) {
     btnText.innerText = "📍 Share Location";
     btn.classList.remove('active');
     clearBtn.style.display = 'none';
+    saveState();
 }
 
 function goToQR() {
@@ -872,18 +946,28 @@ function goToQR() {
     
     document.getElementById('view-form').classList.remove('view-active');
     document.getElementById('view-qr').classList.add('view-active');
+    saveState();
 }
 
 function finishOrder() {
     alert("សូមអរគុណសម្រាប់ការបញ្ជាទិញ! ក្រុមការងារយើងខ្ញុំនឹងទាក់ទងទៅកាន់អ្នកក្នុងពេលឆាប់ៗនេះ។");
+    
+    // បន្ទាប់ពីទិញរួច លុបទិន្នន័យចេញពី Session Storage ដើម្បីចាប់ផ្តើមថ្មី
+    sessionStorage.removeItem('idk_state');
+    
+    document.getElementById('phone1').value = '';
+    document.getElementById('phone2').value = '';
+    document.getElementById('address').value = '';
+    document.getElementById('note').value = '';
+    clearLocation();
+    
     closeModal('orderModal');
 }
 
-/* --- Feedback Form Logic --- */
 function submitFeedback(event) {
-    event.preventDefault(); // ទប់ស្កាត់ការ Refresh ទំព័រ
+    event.preventDefault(); 
     alert("អរគុណសម្រាប់ការបញ្ចេញមតិរបស់អ្នក! ក្រុមការងារយើងខ្ញុំទទួលបានហើយ។");
-    event.target.reset(); // លុបទិន្នន័យក្នុងប្រអប់ក្រោយពេលផ្ញើរួច
+    event.target.reset(); 
 }
 
 function closeModal(modalId){
@@ -892,15 +976,8 @@ function closeModal(modalId){
   if(modalId === 'productModal') {
       setTimeout(function(){ document.getElementById('modalVideo').src = ""; }, 300);
   }
-  if(modalId === 'orderModal') {
-      setTimeout(function(){
-          document.getElementById('phone1').value = '';
-          document.getElementById('phone2').value = '';
-          document.getElementById('address').value = '';
-          document.getElementById('note').value = '';
-          clearLocation(); 
-      }, 300);
-  }
+  // ពេលបិទ Pop-up ឲ្យ Update State ថាគ្មាន Pop-up ណាត្រូវបើកទេ (តែរក្សាលេខទូរស័ព្ទទុក)
+  setTimeout(saveState, 50); 
 }
 </script>
 </body>
