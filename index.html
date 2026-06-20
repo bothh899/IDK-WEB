@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDK BLIND BOX - The Immersive Experience</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600;700;900&family=Montserrat:wght@400;700;900&display=swap');
+
+        :root {
+            --bg-color: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --gold-color: #D4AF37;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Montserrat', 'Kantumruy Pro', sans-serif;
+            overflow-x: hidden;
+            transition: background 1s ease; /* For Golden Mode Transition */
+        }
+
+        body.gold-mode {
+            background: radial-gradient(circle at 50% 50%, #2a2000 0%, #050505 80%);
+        }
+
+        body.locked { overflow: hidden; } /* Lock scroll during intro */
+
+        /* --- 1. INTRO UNBOXING GAMIFICATION --- */
+        #intro-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: #000;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .mystery-box {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #111, #333);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .mystery-box:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+            border-color: #fff;
+        }
+
+        .mystery-box.shake {
+            animation: shake 0.5s infinite;
+            box-shadow: 0 0 100px var(--gold-color);
+            border-color: var(--gold-color);
+            color: var(--gold-color);
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg) scale(1.1); }
+            10% { transform: translate(-1px, -2px) rotate(-2deg) scale(1.1); }
+            20% { transform: translate(-3px, 0px) rotate(2deg) scale(1.1); }
+            30% { transform: translate(3px, 2px) rotate(0deg) scale(1.1); }
+            40% { transform: translate(1px, -1px) rotate(2deg) scale(1.1); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg) scale(1.1); }
+            60% { transform: translate(-3px, 1px) rotate(0deg) scale(1.1); }
+            70% { transform: translate(3px, 1px) rotate(-2deg) scale(1.1); }
+            80% { transform: translate(-1px, -1px) rotate(1deg) scale(1.1); }
+            90% { transform: translate(1px, 2px) rotate(0deg) scale(1.1); }
+            100% { transform: translate(1px, -2px) rotate(-1deg) scale(1.1); }
+        }
+
+        .tap-text {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            color: var(--text-muted);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; color: #fff; }
+            100% { opacity: 0.5; }
+        }
+
+        /* --- 2. MAIN CONTENT & NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 5, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 100;
+            opacity: 0; /* Hidden initially */
+            transform: translateY(-50px);
+            transition: all 1s ease;
+        }
+
+        .logo img { height: 40px; }
+
+        .audio-btn {
+            background: none; border: 1px solid var(--glass-border);
+            color: #fff; padding: 8px 15px; border-radius: 20px;
+            cursor: pointer; font-family: inherit; font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .audio-btn:hover { background: #fff; color: #000; }
+
+        /* --- 3. SCROLLYTELLING SECTIONS --- */
+        .scrolly-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 100px 20px;
+            overflow: hidden;
+        }
+
+        /* Parallax Background Text */
+        .parallax-bg-text {
+            position: absolute;
+            font-size: 15vw;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            white-space: nowrap;
+            z-index: 0;
+            font-family: 'Kantumruy Pro', sans-serif;
+            pointer-events: none;
+            transition: transform 0.1s linear;
+        }
+
+        .gold .parallax-bg-text { color: rgba(212, 175, 55, 0.05); }
+
+        /* Product Presentation */
+        .product-showcase {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .product-showcase.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: transparent;
+            margin-bottom: 30px;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .video-wrapper:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 30px 60px rgba(255,255,255,0.1);
+        }
+
+        .gold .video-wrapper:hover { box-shadow: 0 30px 60px rgba(212, 175, 55, 0.3); }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .product-info h2 {
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+
+        .product-info h3 {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .gold h2, .gold h3 { color: var(--gold-color); text-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+
+        /* --- 4. MODAL (Detail & Size Chart) --- */
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(15px);
+            z-index: 3000; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal.active { display: flex; opacity: 1; }
+
+        .modal-content {
+            background: rgba(20, 20, 20, 0.8); border: 1px solid var(--glass-border);
+            border-radius: 25px; width: 90%; max-width: 1000px; display: flex;
+            overflow: hidden; position: relative;
+            transform: scale(0.9); transition: all 0.4s ease;
+        }
+        .modal.active .modal-content { transform: scale(1); }
+
+        .close-btn {
+            position: absolute; top: 15px; right: 25px; font-size: 2rem;
+            color: #fff; cursor: pointer; z-index: 10;
+        }
+
+        .modal-video { flex: 1; background: #000; }
+        .modal-video video { width: 100%; height: 100%; object-fit: cover; }
+
+        .modal-info { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .modal-info h2 { font-size: 2.5rem; margin-bottom: 5px; }
+        .modal-info h3 { color: var(--text-muted); margin-bottom: 20px; }
+        .modal-info p { line-height: 1.6; margin-bottom: 30px; color: #ccc; }
+
+        .size-chart { width: 100%; border-collapse: collapse; margin-bottom: 30px; text-align: center; }
+        .size-chart th { background: #fff; color: #000; padding: 10px; font-weight: 800; }
+        .size-chart td { padding: 10px; border-bottom: 1px solid var(--glass-border); color: #ddd; }
+
+        .buy-btn {
+            padding: 15px; background: #fff; color: #000; text-align: center;
+            text-decoration: none; font-weight: 700; border-radius: 30px;
+            transition: 0.3s; display: block;
+        }
+        .buy-btn:hover { transform: scale(1.05); }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .scrolly-section { padding: 80px 20px 40px; }
+            .parallax-bg-text { font-size: 25vw; }
+            
+            /* Update aspect ratio to 4:16 for mobile display */
+            .video-wrapper {
+                aspect-ratio: 4 / 16;
+            }
+            .video-wrapper video {
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .modal-content { flex-direction: column; max-height: 90vh; overflow-y: auto; }
+            .modal-video { height: 300px; flex: none; }
+            .modal-info { padding: 20px; }
+        }
+    </style>
+</head>
+<body class="locked">
+
+    <audio id="bgMusic" loop src="bg-music.mp3"></audio>
+    <audio id="unboxSound" src="unbox.mp3"></audio>
+
+    <div id="intro-screen">
+        <div class="mystery-box" id="mysteryBox" onclick="startExperience()">?</div>
+        <div class="tap-text">TAP TO UNBOX</div>
+    </div>
+
+    <nav id="navbar">
+        <div class="logo"><img src="logo.png" alt="IDK Logo"></div>
+        <button class="audio-btn" id="audioToggle" onclick="toggleAudio()">SOUND: ON</button>
+    </nav>
+
+    <main id="main-content" style="opacity: 0; transition: opacity 2s ease;">
+
+        <section class="scrolly-section" style="min-height: 60vh;">
+            <div class="product-showcase visible">
+                <h1 style="font-size: 3rem; font-weight: 900; letter-spacing: 5px;">IDK BLIND BOX</h1>
+                <p style="color: var(--gold-color); letter-spacing: 3px; font-weight: 700; margin-top: 10px;">SCROLL TO REVEAL</p>
+            </div>
+        </section>
+
+        <section class="scrolly-section" id="section-black">
+            <div class="parallax-bg-text" data-speed="-0.2">ស្រមោលអង្គរ</div>
+            <div class="product-showcase item-reveal">
+                <div class="video-wrapper" onclick="openModal('black')">
+                    <video src="black.mp4" autoplay loop muted playsinline></video>
+                </div>
+                <div class="product-info">
+                    <h2>BLACK</h2>
+                    <h3>ស្រមោលអង្គរ</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Click to view details</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="scrolly-section" id="section-white">
+            <div class="parallax-bg-text" data-speed="0.2">អប្សរអង្គរ</div>
+            <div class="product-showcase item-reveal">
+                <div class="video-wrapper" onclick="openModal('white')">
+                    <video src="white.mp4" autoplay loop muted playsinline></video>
+                </div>
+                <div class="product-info">
+                    <h2>WHITE</h2>
+                    <h3>អប្សរអង្គរ</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Click to view details</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="scrolly-section gold" id="section-gold">
+            <div class="parallax-bg-text" data-speed="-0.15">ពន្លឺមាស</div>
+            <div class="product-showcase item-reveal">
+                <div class="video-wrapper" onclick="openModal('gold')" style="border: 1px solid var(--gold-color);">
+                    <video src="gold.mp4" autoplay loop muted playsinline></video>
+                </div>
+                <div class="product-info">
+                    <h2>THE SECRET GOLDEN</h2>
+                    <h3>ពន្លឺមាសនៃអាណាចក្រអង្គរ</h3>
+                    <p style="color: var(--gold-color); font-size: 0.9rem; font-weight: bold;">WIN $$$ CASH (1/1 EXCLUSIVE)</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-video">
+                <video id="modalVideo" src="" autoplay loop muted playsinline></video>
+            </div>
+            <div class="modal-info">
+                <h2 id="modalTitle">TITLE</h2>
+                <h3 id="modalSubtitle">Subtitle</h3>
+                <p id="modalDesc">Desc</p>
+                <table class="size-chart">
+                    <thead><tr><th>Size</th><th>Height (cm)</th><th>Weight (kg)</th></tr></thead>
+                    <tbody>
+                        <tr><td>S</td><td>145-155</td><td>35-50 Kg</td></tr>
+                        <tr><td>M</td><td>155-175</td><td>45-60 Kg</td></tr>
+                        <tr><td>L</td><td>170-185</td><td>55-85 Kg</td></tr>
+                        <tr><td>XL</td><td>Coming...</td><td>Coming...</td></tr>
+                    </tbody>
+                </table>
+                <a href="#" class="buy-btn" id="modalBtn">PRE-ORDER NOW</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Unboxing Gamification
+        const bgMusic = document.getElementById('bgMusic');
+        const unboxSound = document.getElementById('unboxSound');
+        let isAudioPlaying = true;
+
+        function startExperience() {
+            const box = document.getElementById('mysteryBox');
+            // Play unbox sound (if file exists)
+            unboxSound.volume = 0.8;
+            unboxSound.play().catch(e => console.log("No unbox audio file"));
+
+            box.classList.add('shake');
+            document.querySelector('.tap-text').innerHTML = "UNBOXING...";
+
+            setTimeout(() => {
+                // Hide Intro
+                document.getElementById('intro-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('intro-screen').style.visibility = 'hidden';
+                    document.body.classList.remove('locked');
+                    
+                    // Show Main Content
+                    document.getElementById('main-content').style.opacity = '1';
+                    document.getElementById('navbar').style.opacity = '1';
+                    document.getElementById('navbar').style.transform = 'translateY(0)';
+
+                    // Start BG Music (if file exists)
+                    bgMusic.volume = 0.4;
+                    bgMusic.play().catch(e => console.log("No bg music file"));
+                }, 1000);
+            }, 1500); // Box shakes for 1.5 seconds
+        }
+
+        function toggleAudio() {
+            const btn = document.getElementById('audioToggle');
+            if(isAudioPlaying) {
+                bgMusic.pause();
+                btn.innerText = "SOUND: OFF";
+                isAudioPlaying = false;
+            } else {
+                bgMusic.play();
+                btn.innerText = "SOUND: ON";
+                isAudioPlaying = true;
+            }
+        }
+
+        // 2. Scrollytelling (Reveal Items)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Golden Mode Trigger
+                    if(entry.target.closest('#section-gold')) {
+                        document.body.classList.add('gold-mode');
+                    }
+                } else {
+                    // Remove Golden Mode when scrolling up
+                    if(entry.target.closest('#section-gold')) {
+                        document.body.classList.remove('gold-mode');
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.item-reveal').forEach(el => observer.observe(el));
+
+        // 3. Parallax Effect for Background Texts
+        window.addEventListener('scroll', () => {
+            let scrollY = window.scrollY;
+            document.querySelectorAll('.parallax-bg-text').forEach(el => {
+                let speed = parseFloat(el.getAttribute('data-speed'));
+                el.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        });
+
+        // 4. Modal Logic
+        const productData = {
+            black: { title: "BLACK", subtitle: "ស្រមោលអង្គរ", video: "black.mp4", desc: "អាវរចនាបថស្រមោលអង្គរ ពណ៌ខ្មៅអាថ៌កំបាំង។", btnBg: "#fff", btnColor: "#000" },
+            white: { title: "WHITE", subtitle: "អប្សរអង្គរ", video: "white.mp4", desc: "ពណ៌សបរិសុទ្ធ តំណាងឲ្យរបាំអប្សរា។", btnBg: "#fff", btnColor: "#000" },
+            gold: { title: "THE SECRET GOLDEN", subtitle: "ពន្លឺមាសនៃអាណាចក្រអង្គរ", video: "gold.mp4", desc: "Limited 1/1 ទទួលបានប្រាក់រង្វាន់ $333!", btnBg: "#D4AF37", btnColor: "#000" }
+        };
+
+        const modal = document.getElementById('productModal');
+        function openModal(id) {
+            const data = productData[id];
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalTitle').style.color = id === 'gold' ? '#D4AF37' : '#fff';
+            document.getElementById('modalSubtitle').innerText = data.subtitle;
+            document.getElementById('modalDesc').innerText = data.desc;
+            document.getElementById('modalVideo').src = data.video;
+            
+            const btn = document.getElementById('modalBtn');
+            btn.style.backgroundColor = data.btnBg;
+            btn.style.color = data.btnColor;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => { document.getElementById('modalVideo').src = ""; }, 300);
+        }
+    </script>
+</body>
+</html>
