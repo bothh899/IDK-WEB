@@ -3,7 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IDK BLIND BOX — ស្រមោលអង្គរ</title>
+<title>IDK BLIND BOX - កំពូលអាវយឺត Streetwear កម្ពុជា | ស្រមោលអង្គរ</title>
+
+<!-- SEO & Social Media Meta Tags -->
+<meta name="description" content="IDK BLIND BOX: អាវយឺតរចនាបថស្រមោលអង្គរ និងអប្សរអង្គរដ៏អាថ៌កំបាំង។ ទិញអាវ Limited Edition ថ្ងៃនេះ ក្នុងតម្លៃត្រឹមតែ $48 និងមានឱកាសឈ្នះប្រាក់រង្វាន់ $333។">
+<meta name="keywords" content="IDK, IDK Blind Box, Streetwear Cambodia, អាវយឺត, អាវអង្គរ, លក់អាវយឺត, Hoodie Cambodia, Local Brand Cambodia">
+<meta name="author" content="IDK CAMBODIA">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://idk-bice-one.vercel.app/">
+<meta property="og:title" content="IDK BLIND BOX - The Immersive Streetwear">
+<meta property="og:description" content="សាកល្បងបើកប្រអប់អាថ៌កំបាំង IDK Blind Box អាវរចនាបថអង្គរវត្ត។ ឈ្នះប្រាក់រង្វាន់ $333 ភ្លាមៗ!">
+<meta property="og:image" content="https://idk-bice-one.vercel.app/logo.png">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="IDK BLIND BOX">
+<meta property="twitter:description" content="អាវយឺតរចនាបថស្រមោលអង្គរ លំដាប់ High-end។">
+<meta property="twitter:image" content="https://idk-bice-one.vercel.app/logo.png">
+
+<!-- JSON-LD Schema for Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "IDK BLIND BOX Hoodie",
+  "image": "https://idk-bice-one.vercel.app/logo.png",
+  "description": "អាវយឺតរចនាបថស្រមោលអង្គរ និងអប្សរអង្គរ គុណភាពខ្ពស់។",
+  "brand": {
+    "@type": "Brand",
+    "name": "IDK Cambodia"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://idk-bice-one.vercel.app/",
+    "priceCurrency": "USD",
+    "price": "48.00",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition"
+  }
+}
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bayon&family=Kantumruy+Pro:wght@300;400;600;700;900&family=Montserrat:wght@400;700;900&display=swap');
 
@@ -101,54 +141,28 @@ nav{
   z-index:100; opacity:0;
   transition:top 0.4s ease, opacity 1s ease;
 }
-
 .nav-content {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 140px; /* Lock width so navbar doesn't resize wildly */
-  height: 35px;
+  position: relative; display: flex; align-items: center; justify-content: center;
+  width: 140px; height: 35px;
 }
-
 .main-logo-img {
-  height: 35px;
-  position: absolute;
-  z-index: 2; /* Always stay on top of the text */
-  left: 20px;
-  filter: drop-shadow(0 0 5px rgba(0,0,0,0.8)); /* Add shadow to hide text passing behind */
+  height: 35px; position: absolute; z-index: 2; left: 20px;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.8));
 }
-
-/* Animated Oval Text */
 .idk-pop-text {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-size: 1.1rem;
-  color: #fff;
-  border: 2px solid #fff;
-  border-radius: 50px;
-  padding: 2px 14px;
-  letter-spacing: -0.5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.2;
-  
-  position: absolute;
-  z-index: 1; /* Hide behind main logo */
-  left: 20px; /* Start at same position as logo */
-  
-  /* 6s total cycle: out for 4s, in for 2s */
+  font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.1rem;
+  color: #fff; border: 2px solid #fff; border-radius: 50px; padding: 2px 14px;
+  letter-spacing: -0.5px; display: flex; align-items: center; justify-content: center;
+  line-height: 1.2; position: absolute; z-index: 1; left: 20px;
   animation: hideAndSeek 6s infinite cubic-bezier(0.25, 1, 0.5, 1);
 }
 .idk-pop-text span { color: var(--gold); }
-
 @keyframes hideAndSeek {
   0% { transform: translateX(0) scaleY(0.85) scaleX(0.8); opacity: 0; }
-  10% { transform: translateX(45px) scaleY(0.95) scaleX(1); opacity: 1; } /* Pops out (0.6s) */
-  66.6% { transform: translateX(45px) scaleY(0.95) scaleX(1); opacity: 1; } /* Stays out (approx 4s) */
-  75% { transform: translateX(0) scaleY(0.85) scaleX(0.8); opacity: 0; } /* Slides back in (0.5s) */
-  100% { transform: translateX(0) scaleY(0.85) scaleX(0.8); opacity: 0; } /* Hides (approx 2s) */
+  10% { transform: translateX(45px) scaleY(0.95) scaleX(1); opacity: 1; }
+  66.6% { transform: translateX(45px) scaleY(0.95) scaleX(1); opacity: 1; }
+  75% { transform: translateX(0) scaleY(0.85) scaleX(0.8); opacity: 0; }
+  100% { transform: translateX(0) scaleY(0.85) scaleX(0.8); opacity: 0; }
 }
 
 /* ===== SECTIONS ===== */
@@ -256,38 +270,97 @@ main { flex: 1; }
 .gold-section h2, .gold-section h3{ color:var(--gold); text-shadow:0 0 20px rgba(212,175,55,0.35); }
 .product-info p{ color:#666; font-size:0.85rem; }
 
-/* ===== FOOTER (FEEDBACK & INFO) ===== */
+
+/* ===== FOOTER (3D & MODERN) ===== */
 .site-footer {
-  margin-top: 50px; background: rgba(10, 10, 10, 0.7);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 60px 20px 30px; position: relative; z-index: 10;
+  margin-top: 80px;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(5,5,5,0), rgba(10,10,10,0.95));
+  border-top: 1px solid rgba(255,255,255,0.03);
+  padding: 80px 20px 40px;
+  z-index: 10;
+  overflow: hidden;
 }
-.footer-container { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 50px; justify-content: space-between; }
-.footer-info, .footer-feedback { flex: 1; min-width: 300px; }
+.footer-bg-glow {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 70%; height: 250px;
+  background: radial-gradient(ellipse, rgba(212,175,55,0.06) 0%, transparent 60%);
+  z-index: -1; pointer-events: none;
+}
+.footer-container {
+  max-width: 1000px; margin: 0 auto; 
+  display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;
+  perspective: 1500px;
+}
+.footer-card {
+  flex: 1; min-width: 320px;
+  background: rgba(20,20,20,0.5);
+  backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px; padding: 40px;
+  transform: translateZ(0); transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+.footer-card:hover {
+  transform: translateY(-8px) translateZ(20px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(212,175,55,0.2);
+  border-color: rgba(212,175,55,0.3);
+}
 
-.footer-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: #fff; letter-spacing: -1px; margin-bottom: 5px; }
+.footer-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.5rem; color: #fff; letter-spacing: -1px; margin-bottom: 5px; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
 .footer-logo span { color: var(--gold); }
-.footer-desc { color: #888; font-size: 0.9rem; margin-bottom: 25px; font-family: 'Kantumruy Pro', sans-serif; }
+.footer-desc { color: #888; font-size: 0.95rem; margin-bottom: 30px; font-family: 'Kantumruy Pro', sans-serif; }
 
-.contact-list { list-style: none; margin-bottom: 25px; }
-.contact-list li { display: flex; align-items: flex-start; gap: 15px; color: #ccc; font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5; font-family: 'Montserrat', 'Kantumruy Pro', sans-serif; }
-.contact-icon { flex-shrink: 0; width: 20px; height: 20px; fill: var(--gold); margin-top: 2px; }
+.contact-list { list-style: none; margin-bottom: 35px; }
+.contact-list li { display: flex; align-items: flex-start; gap: 15px; color: #ddd; font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; font-family: 'Montserrat', 'Kantumruy Pro', sans-serif; }
+.contact-icon { flex-shrink: 0; width: 22px; height: 22px; fill: var(--gold); margin-top: 2px; filter: drop-shadow(0 2px 5px rgba(212,175,55,0.4)); }
 
-.social-links { display: flex; gap: 15px; }
-.social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; text-decoration: none; font-weight: bold; font-size: 0.85rem; transition: all 0.3s; }
-.social-links a:hover { background: var(--gold); color: #000; border-color: var(--gold); transform: translateY(-3px); }
+/* 3D Facebook Button */
+.fb-btn-3d {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border: 1px solid rgba(212,175,55,0.3); border-radius: 30px;
+  padding: 12px 25px; color: #fff; text-decoration: none;
+  font-family: 'Kantumruy Pro', sans-serif; font-weight: 600; font-size: 0.95rem;
+  transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+.fb-btn-3d svg { width: 24px; height: 24px; fill: #1877F2; transition: 0.3s; }
+.fb-btn-3d:hover {
+  background: var(--gold); color: #000; border-color: var(--gold);
+  transform: translateY(-5px); box-shadow: 0 15px 30px rgba(212,175,55,0.4);
+}
+.fb-btn-3d:hover svg { fill: #000; }
 
-.footer-feedback h3 { font-size: 1.4rem; color: #fff; margin-bottom: 20px; font-family: 'Kantumruy Pro', sans-serif; font-weight: 700; }
-.feedback-form { display: flex; flex-direction: column; gap: 15px; }
-.feedback-form input, .feedback-form textarea { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.5); color: #fff; font-family: 'Montserrat', 'Kantumruy Pro', sans-serif; font-size: 0.9rem; outline: none; transition: 0.3s; }
-.feedback-form input:focus, .feedback-form textarea:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(212,175,55,0.1); }
-.feedback-form textarea { resize: none; height: 100px; }
-.btn-submit-feedback { background: #fff; color: #000; padding: 14px; border: none; border-radius: 30px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; font-family: 'Montserrat', 'Kantumruy Pro', sans-serif; }
-.btn-submit-feedback:hover { background: var(--gold); }
+.footer-card h3 { font-size: 1.4rem; color: #fff; margin-bottom: 25px; font-family: 'Kantumruy Pro', sans-serif; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.footer-card h3::before { content:''; display:inline-block; width:6px; height:22px; background:var(--gold); border-radius:4px; }
+
+/* 3D Form Inputs */
+.feedback-form { display: flex; flex-direction: column; gap: 20px; }
+.feedback-form input, .feedback-form textarea {
+  width: 100%; padding: 16px 20px; border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.4);
+  color: #fff; font-family: 'Montserrat', 'Kantumruy Pro', sans-serif; font-size: 0.95rem;
+  outline: none; transition: all 0.3s;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,0.6);
+}
+.feedback-form input:focus, .feedback-form textarea:focus {
+  border-color: var(--gold); background: rgba(0,0,0,0.6);
+  box-shadow: inset 0 3px 10px rgba(0,0,0,0.6), 0 0 15px rgba(212,175,55,0.15);
+}
+.feedback-form textarea { resize: none; height: 110px; }
+.btn-submit-feedback {
+  background: #fff; color: #000; padding: 16px; border: none; border-radius: 30px;
+  font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s;
+  font-family: 'Montserrat', 'Kantumruy Pro', sans-serif; letter-spacing: 1px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4); display: flex; justify-content: center; align-items: center; gap: 8px;
+}
+.btn-submit-feedback:hover {
+  background: var(--gold); transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(212,175,55,0.4);
+}
 .btn-submit-feedback:active { transform: scale(0.98); }
 
-.footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px dashed rgba(255,255,255,0.1); color: #555; font-size: 0.8rem; font-family: 'Montserrat', sans-serif; }
+.footer-bottom { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px dashed rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; }
 
 /* ===== MODALS BASE ===== */
 .modal{
@@ -381,7 +454,6 @@ main { flex: 1; }
 
 @media (max-width:768px){
   nav{ width:80%; padding:10px 20px; }
-  .logo img{ height:28px; }
   .idk-pop-text { font-size: 1rem; padding: 2px 10px; left: 15px; }
   .main-logo-img { left: 15px; height: 30px; }
   .nav-content { width: 120px; }
@@ -403,7 +475,8 @@ main { flex: 1; }
   .order-modal-content { padding:25px 20px; }
   .form-row { flex-direction:column; gap:0; } 
   .size-chart th, .size-chart td { padding: 6px 3px; font-size: 0.75rem; }
-  .footer-container { flex-direction: column; gap: 40px; }
+  
+  .footer-card { padding: 30px 20px; }
 }
 </style>
 </head>
@@ -486,36 +559,44 @@ main { flex: 1; }
 
 </main>
 
+<!-- ===== FOOTER: 3D CARDS ===== -->
 <footer class="site-footer" id="footer" style="opacity:0; transition:opacity 1.5s ease;">
+  <div class="footer-bg-glow"></div>
   <div class="footer-container">
-    <div class="footer-info">
+    
+    <!-- Info Card -->
+    <div class="footer-card info-card">
       <div class="footer-logo">iDK<span>.</span></div>
       <p class="footer-desc">The Immersive Streetwear Experience.</p>
       <ul class="contact-list">
         <li>
-          <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           LIFE field, Stable Coffee, TK, Toul Kork, Cambodia, 120400
         </li>
         <li>
-          <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
           081 338 882
         </li>
       </ul>
-      <div class="social-links">
-        <a href="#" target="_blank">IG</a>
-        <a href="#" target="_blank">FB</a>
-        <a href="#" target="_blank">TT</a>
-      </div>
+      
+      <!-- Prominent 3D Facebook Button -->
+      <a href="https://www.facebook.com/profile.php?id=61590243875187" target="_blank" class="fb-btn-3d">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        ភ្ជាប់ទំនាក់ទំនងតាម Facebook
+      </a>
     </div>
-    <div class="footer-feedback">
-      <h3>បញ្ចេញមតិរបស់អ្នក (Feedback)</h3>
+
+    <!-- Feedback Card -->
+    <div class="footer-card feedback-card">
+      <h3>បញ្ចេញមតិរបស់អ្នក</h3>
       <form class="feedback-form" onsubmit="submitFeedback(event)">
         <input type="text" placeholder="ឈ្មោះរបស់អ្នក (Name)" required>
-        <textarea placeholder="មតិយោបល់... (Your message/feedback)" required></textarea>
+        <textarea placeholder="មតិយោបល់... (Your feedback/message)" required></textarea>
         <button type="submit" class="btn-submit-feedback">ផ្ញើសារ (SEND MESSAGE)</button>
       </form>
     </div>
   </div>
+  
   <div class="footer-bottom">
     © 2026 IDK CAMBODIA. All Rights Reserved.
   </div>
